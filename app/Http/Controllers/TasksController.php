@@ -16,11 +16,12 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        
+
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
