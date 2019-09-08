@@ -20,10 +20,10 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::get('/', 'TasksController@index');
-Route::resource('tasks', 'TasksController');
+
 
 // ユーザ機能
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('tasks', 'TasksController', ['only' => ['index', 'show', 'store', 'destroy']]);
+Route::group(['middleware' => 'guest'], function () {
+        Route::resource('users', 'UsersController');
+        Route::resource('tasks', 'TasksController');
 });
